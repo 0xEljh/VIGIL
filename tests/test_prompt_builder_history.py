@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from agent.prompt_builder import build_prompt
+from examples.embodied_agent.agent.prompt_builder import build_prompt
 
 
 class PromptBuilderHistoryTests(unittest.TestCase):

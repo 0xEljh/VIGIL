@@ -3,7 +3,10 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
-from agent.inference import LlamaCppServerConfig, LlamaCppServerInference
+from examples.embodied_agent.agent.inference import (
+    LlamaCppServerConfig,
+    LlamaCppServerInference,
+)
 
 
 class LlamaCppServerOfflineTests(unittest.TestCase):

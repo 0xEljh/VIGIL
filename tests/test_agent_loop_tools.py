@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import unittest
 
-from agent.inference import ChatCompletionResult, ToolCall
-from agent.loop import AgentLoop
-from agent.prompt_builder import PromptBundle
+from examples.embodied_agent.agent.inference import ChatCompletionResult, ToolCall
+from examples.embodied_agent.agent.loop import AgentLoop
+from examples.embodied_agent.agent.prompt_builder import PromptBundle
 
 
 class _FakeDispatcher:

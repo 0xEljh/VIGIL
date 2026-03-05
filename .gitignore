@@ -6,6 +6,7 @@ dist/
 *.egg-info/
 
 .pytest_cache/
+.benchmarks/
 .coverage*
 htmlcov/
 
@@ -21,4 +22,3 @@ llama.cpp/*
 artifacts/*
 
 *.jpg
-

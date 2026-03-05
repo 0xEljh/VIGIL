@@ -1,5 +1,5 @@
 {
-  description = "mistral-worldwide dev environment";
+  description = "vigil dev environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -73,7 +73,7 @@
             fi
           done
 
-          echo "Nix dev shell ready. Next: uv sync"
+          echo "Nix dev shell ready. Next: uv sync --all-extras"
         '';
       };
     };

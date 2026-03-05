@@ -6,7 +6,7 @@ import unittest
 
 import numpy as np
 
-from memory.embeddings import EmbeddingModel
+from vigil.memory.embeddings import EmbeddingModel
 
 
 class _FakeSentenceTransformer:

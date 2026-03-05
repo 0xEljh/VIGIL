@@ -6,7 +6,13 @@ from pathlib import Path
 
 
 def _load_ui_app_ast() -> ast.Module:
-    source_path = Path(__file__).resolve().parents[1] / "ui" / "app.py"
+    source_path = (
+        Path(__file__).resolve().parents[1]
+        / "examples"
+        / "embodied_agent"
+        / "ui"
+        / "app.py"
+    )
     source_text = source_path.read_text(encoding="utf-8")
     return ast.parse(source_text)
 

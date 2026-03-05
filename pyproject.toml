@@ -1,26 +1,43 @@
 [project]
-name = "mistral-worldwide"
+name = "vigil"
 version = "0.1.0"
-description = "Mistral Worldwide API and utilities"
+description = "VIGIL: lightweight spatial-temporal memory for edge embodied AI"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "faiss-cpu",
-    "fastapi",
-    "uvicorn",
-    "websockets",
-    "pydantic",
+    "numpy",
+    "sentence-transformers",
+]
+
+[project.optional-dependencies]
+perception = [
+    "opencv-python",
+    "torch>=2.4",
+    "ultralytics",
+]
+observability = [
     "matplotlib",
     "networkx",
-    "numpy",
+]
+examples = [
+    "fastapi",
+    "matplotlib",
+    "networkx",
     "opencv-python",
     "pillow",
-    "sentence-transformers",
-    "ultralytics",
+    "pydantic",
+    "textual>=0.75.0",
     "torch>=2.4",
     "transformers>=4.40",
+    "ultralytics",
+    "uvicorn",
     "vllm>=0.16.0",
-    "textual>=0.75.0",
+    "websockets",
+]
+dev = [
+    "pytest",
+    "pytest-benchmark",
 ]
 
 [build-system]
@@ -28,8 +45,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["routes"]
-include = ["main.py"]
+packages = ["vigil"]
 
 [tool.uv.sources]
 torch = [{ index = "pytorch-cu128" }]
@@ -40,3 +56,7 @@ torchaudio = [{ index = "pytorch-cu128" }]
 name = "pytorch-cu128"
 url = "https://download.pytorch.org/whl/cu128"
 explicit = true
+
+[tool.pytest.ini_options]
+python_files = ["test_*.py", "bench_*.py"]
+testpaths = ["tests"]

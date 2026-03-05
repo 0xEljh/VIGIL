@@ -1,49 +1,9 @@
 from __future__ import annotations
 
-from importlib.util import module_from_spec, spec_from_file_location
-from pathlib import Path
-import sys
 import unittest
 
-
-_GRAPH_HISTORY_PATH = (
-    Path(__file__).resolve().parents[1] / "memory" / "graph_history.py"
-)
-_GRAPH_HISTORY_SPEC = spec_from_file_location(
-    "graph_history_module",
-    _GRAPH_HISTORY_PATH,
-)
-if _GRAPH_HISTORY_SPEC is None or _GRAPH_HISTORY_SPEC.loader is None:
-    raise ImportError(f"Failed to load graph history module from {_GRAPH_HISTORY_PATH}")
-
-_GRAPH_HISTORY_MODULE = module_from_spec(_GRAPH_HISTORY_SPEC)
-sys.modules[_GRAPH_HISTORY_SPEC.name] = _GRAPH_HISTORY_MODULE
-_GRAPH_HISTORY_SPEC.loader.exec_module(_GRAPH_HISTORY_MODULE)
-
-GraphHistoryStore = _GRAPH_HISTORY_MODULE.GraphHistoryStore
-
-
-def _object(
-    track_id: int,
-    *,
-    visible: bool = True,
-    first_seen: int = 0,
-    last_seen: int = 0,
-    object_type: str = "object",
-) -> dict[str, object]:
-    return {
-        "id": track_id,
-        "type": object_type,
-        "position": {"x": 0.0, "y": 0.0},
-        "velocity": {"x": 0.0, "y": 0.0},
-        "state": {
-            "visible": visible,
-            "moving": False,
-        },
-        "confidence": 1.0,
-        "first_seen": first_seen,
-        "last_seen": last_seen,
-    }
+from tests.conftest import _object, _snapshot
+from vigil.memory.graph_history import GraphHistoryStore
 
 
 def _relation(subject: str, object_id: str) -> dict[str, object]:
@@ -52,21 +12,6 @@ def _relation(subject: str, object_id: str) -> dict[str, object]:
         "relation": "left, near, not overlapping",
         "object": object_id,
         "last_updated": 0,
-    }
-
-
-def _snapshot(
-    world_version: int,
-    timestamp: int,
-    objects: list[dict[str, object]],
-    relations: list[dict[str, object]] | None = None,
-) -> dict[str, object]:
-    return {
-        "world_version": world_version,
-        "timestamp": timestamp,
-        "objects": objects,
-        "relations": relations or [],
-        "recent_events": [],
     }
 
 

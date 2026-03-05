@@ -4,9 +4,9 @@ import asyncio
 import threading
 import unittest
 
-from agent.loop import AgentTurn
-from agent.prompt_builder import PromptBundle
-from conversation.manager import ConversationManager
+from examples.embodied_agent.agent.loop import AgentTurn
+from examples.embodied_agent.agent.prompt_builder import PromptBundle
+from examples.embodied_agent.conversation.manager import ConversationManager
 
 
 class _BlockingFakeAgentLoop:

@@ -3,7 +3,10 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
-from orchestration.pipeline import _build_arg_parser, _resolve_interactive_log_path
+from examples.embodied_agent.orchestration.pipeline import (
+    _build_arg_parser,
+    _resolve_interactive_log_path,
+)
 
 
 class PipelineInteractiveOptionsTests(unittest.TestCase):

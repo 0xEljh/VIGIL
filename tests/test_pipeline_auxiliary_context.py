@@ -3,7 +3,9 @@ from __future__ import annotations
 import unittest
 from typing import Any
 
-from orchestration.aux_context import _build_auxiliary_context_with_fallback
+from examples.embodied_agent.orchestration.aux_context import (
+    _build_auxiliary_context_with_fallback,
+)
 
 
 class _FailingSemanticRetriever:
