@@ -116,21 +116,6 @@ flowchart LR
 - `vigil.observability`
   - `GraphSnapshotRecorder`: graph PNG snapshots for debugging and analysis
 
-## Benchmarks (WIP)
-
-Benchmark scaffolding lives in `benchmarks/` and covers:
-
-- semantic indexing throughput
-- retrieval/query latency
-- graph-history save and eviction behavior
-- end-to-end perception-to-memory-to-retrieval flow
-
-Run benchmarks:
-
-```bash
-uv run --extra dev pytest benchmarks --benchmark-only
-```
-
 ## Examples
 
 - Embodied agent demo app: `examples/embodied_agent/README.md`
